@@ -4,7 +4,7 @@
 interface IOutput
 {
 
-    public function setData(array $price);
+    public function setData(array $data);
 
 
 	/**

@@ -3,12 +3,11 @@
 
 class Output implements IOutput
 {
-    private $price = [];
+    private $data = [];
 
-    public function setData(array $price)
+    public function setData(array $data)
     {
-        $this->price = $price;
-
+        $this->data = $data;
     }
 
 
@@ -19,15 +18,17 @@ class Output implements IOutput
     {
         $out = [];
 
-        if (count($this->price))
+        if (count($this->data))
         {
 
-            foreach ($this->price as $id => $price)
+            foreach ($this->data as $id => $data)
             {
                 $out[] = [
                     $id =>
                     [
-                        'price' => $price
+                        'name' => $data['name'],
+                        'price' => $data['price'],
+                        'rating' => $data['rating']
                     ]
                 ];
             }

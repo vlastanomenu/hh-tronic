@@ -27,7 +27,8 @@ class Dispatcher
 	 */
 	public function run()
 	{
-	    $price = [];
+	    $data = [];
+
 
 	    $f = file_get_contents('vstup.txt');
 	    $ids = explode(chr(13).chr(10),$f);
@@ -36,11 +37,13 @@ class Dispatcher
         {
             if ($id)
             {
-                $price[$id] = $this->grabber->getPrice($id);
+                $data[$id]['name'] = $this->grabber->getName($id);
+                $data[$id]['price'] = $this->grabber->getPrice($id);
+                $data[$id]['rating'] = $this->grabber->getRating($id);
             }
         }
 
-	    $this->output->setData($price);
+	    $this->output->setData($data);
 
         return $this->output->getJson();
 	}
